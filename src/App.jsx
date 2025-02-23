@@ -5,12 +5,10 @@ import Realms from "./pages/Realms";
 function App() {
    return (
       <Router>
-         <div className="App">
-            <Routes>
-               <Route path="/" element={<Realms />} />
-               <Route path="/realms" element={<Realms />} />
-            </Routes>
-         </div>
+         <Routes>
+            <Route path="/" element={<Realms />} />
+            <Route path="/realms" element={<Realms />} />
+         </Routes>
       </Router>
    );
 }

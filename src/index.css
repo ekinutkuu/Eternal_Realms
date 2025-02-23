@@ -1,6 +1,18 @@
 @import "tailwindcss";
 
-* {
-   margin: 0;
-   padding: 0;
+@layer base {
+   * {
+      margin: 0;
+      padding: 0;
+   }
+}
+
+@theme {
+   --color-light: #c4c4c4;
+}
+
+.bg-dark-pattern {
+   background-color: #0a0a0a;
+   background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+   background-size: 40px 40px;
 }
