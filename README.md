@@ -11,3 +11,10 @@ npm install
 npm run frontend
 npm run backend
 ```
+
+> [!IMPORTANT]
+> Don't forget to set your postgre informations:
+
+```
+src/backend/pg_config.ts
+```
