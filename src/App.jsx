@@ -1,13 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './index.css';
-import Realms from "./pages/Realms";
+import RealmsList from "./pages/RealmsList";
+import Realm from "./pages/Realm";
 
 function App() {
    return (
       <Router>
          <Routes>
-            <Route path="/" element={<Realms />} />
-            <Route path="/realms" element={<Realms />} />
+            <Route path="/" element={<RealmsList />} />
+            <Route path="/realms" element={<RealmsList />} />
+            <Route path="/realms/name" element={<Realm />} />
          </Routes>
       </Router>
    );
