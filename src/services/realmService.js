@@ -8,9 +8,10 @@ export const fetchRealms = async () => {
       return response.data;
    } catch (error) {
       if (error.response) {
-         console.error(`${error.response.status}: ${error.response.data}`);
+         console.error(`${error.response.status}: ${error.response.data.message}`);
+      } else {
+         console.error("Error Fetching Realms:", error);
       }
-      console.error("Error Fetching Realms:", error);
       throw error;
    }
 };

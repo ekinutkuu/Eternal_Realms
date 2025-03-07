@@ -11,7 +11,7 @@ router.get("/realms", async (req, res) => {
       res.json(realms);
    } catch (error) {
       console.error("Error fetching realms:", error);
-      res.status(500).json({ error: "Internal Server Error" });
+      res.status(500).json({ message: "Error fetching realms!" });
    }
 });
 
