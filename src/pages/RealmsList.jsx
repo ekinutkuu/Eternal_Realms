@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RealmCard from "../components/RealmCard";
+import { fetchRealms } from "../services/realmService";
 
 const RealmsList = () => {
    const navigate = useNavigate();
+   const [realms, setRealms] = useState([]);
+
+   useEffect(() => {
+      getRealms();
+   }, []);
+
+   useEffect(() => {
+      const realmNames = realms.map(realm => realm.name);
+      console.log("Realm Names:", realmNames);
+   }, [realms]);
 
    const handleRealmSelect = () => {
       navigate("/realms/name");
    };
 
-   const realmCards = Array(4).fill(null).map((_, index) => (
-      <RealmCard key={index} onClick={handleRealmSelect} />
-   ));
+   const getRealms = async () => {
+      const realmsData = await fetchRealms();
+      setRealms(realmsData);
+   };
 
    return (
       <div className="bg-dark-pattern min-h-screen flex flex-col items-center justify-center">
@@ -19,7 +31,13 @@ const RealmsList = () => {
             Realms
          </label>
          <div className="grid grid-cols-4 gap-10 p-8">
-            {realmCards}
+            {realms.map((realm, index) => (
+               <RealmCard
+                  key={index}
+                  name={realm.name}
+                  onClick={() => handleRealmSelect()}
+               />
+            ))}
          </div>
       </div>
    );
