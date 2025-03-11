@@ -16,8 +16,9 @@ const RealmsList = () => {
       console.log("Realm Names:", realmNames);
    }, [realms]);
 
-   const handleRealmSelect = () => {
-      navigate("/realms/name");
+   const handleRealmSelect = (name) => {
+      const formattedName = name.toLowerCase().replace(/ /g, "_").replace(/[^a-z0-9_]/g, "");
+      navigate(`/realms/${formattedName}`);
    };
 
    const getRealms = async () => {
@@ -35,7 +36,7 @@ const RealmsList = () => {
                <RealmCard
                   key={index}
                   name={realm.name}
-                  onClick={() => handleRealmSelect()}
+                  onClick={() => handleRealmSelect(realm.name)}
                />
             ))}
          </div>

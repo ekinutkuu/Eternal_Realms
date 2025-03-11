@@ -9,7 +9,7 @@ function App() {
          <Routes>
             <Route path="/" element={<RealmsList />} />
             <Route path="/realms" element={<RealmsList />} />
-            <Route path="/realms/name" element={<Realm />} />
+            <Route path="/realms/:name" element={<Realm />} />
          </Routes>
       </Router>
    );
