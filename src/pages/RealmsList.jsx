@@ -1,29 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRealms } from "../redux/slices/realmSlice";
 import RealmCard from "../components/RealmCard";
-import { fetchRealms } from "../services/realmService";
 
 const RealmsList = () => {
    const navigate = useNavigate();
-   const [realms, setRealms] = useState([]);
+   const dispatch = useDispatch();
+   const realms = useSelector((state) => state.realms.realms);
+   const fetchStatus = useSelector((state) => state.realms.status);
 
    useEffect(() => {
-      getRealms();
-   }, []);
-
-   useEffect(() => {
-      const realmNames = realms.map(realm => realm.name);
-      console.log("Realm Names:", realmNames);
-   }, [realms]);
+      if (fetchStatus === "idle") {
+         dispatch(fetchRealms());
+      }
+      console.log("Realms:", realms);
+   }, [fetchStatus, dispatch]);
 
    const handleRealmSelect = (name) => {
       const formattedName = name.toLowerCase().replace(/ /g, "_").replace(/[^a-z0-9_]/g, "");
       navigate(`/realms/${formattedName}`);
-   };
-
-   const getRealms = async () => {
-      const realmsData = await fetchRealms();
-      setRealms(realmsData);
    };
 
    return (
