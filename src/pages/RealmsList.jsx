@@ -26,7 +26,7 @@ const RealmsList = () => {
    if (fetchStatus === "loading") {
       return (
          <div className="bg-dark-pattern min-h-screen flex items-center justify-center">
-            <LoadingAnimation />
+            <LoadingAnimation text="LOADING" />
          </div>
       );
    }
