@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRealms } from "../redux/slices/realmSlice";
 import RealmCard from "../components/RealmCard";
+import LoadingAnimation from "../components/LoadingAnimation";
 
 const RealmsList = () => {
    const navigate = useNavigate();
@@ -21,6 +22,14 @@ const RealmsList = () => {
       const formattedName = name.toLowerCase().replace(/ /g, "_").replace(/[^a-z0-9_]/g, "");
       navigate(`/realms/${formattedName}`);
    };
+
+   if (fetchStatus === "loading") {
+      return (
+         <div className="bg-dark-pattern min-h-screen flex items-center justify-center">
+            <LoadingAnimation />
+         </div>
+      );
+   }
 
    return (
       <div className="bg-dark-pattern min-h-screen flex flex-col items-center justify-center">

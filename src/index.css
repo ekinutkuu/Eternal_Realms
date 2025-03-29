@@ -11,19 +11,48 @@
    --color-light: #c4c4c4;
 }
 
-.bg-dark-pattern {
-   background-color: #0a0a0a;
-   background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-   background-size: 40px 40px;
-}
+@layer utilities {
+   @keyframes move {
+      0% {
+         left: 0%;
+         opacity: 0;
+         transform: rotate(180deg);
+      }
+      35% {
+         left: 41%;
+         opacity: 1;
+         transform: rotate(0deg);
+      }
+      65% {
+         left: 59%;
+         opacity: 1;
+         transform: rotate(0deg);
+      }
+      100% {
+         left: 100%;
+         opacity: 0;
+         transform: rotate(-180deg);
+      }
+   }
 
-.no-scrollbar {
-   scrollbar-width: none;
-   -ms-overflow-style: none;
-}
+   .animate-move {
+      animation: move 2s linear infinite;
+   }
 
-.no-scrollbar::-webkit-scrollbar {
-   display: none;
-   scrollbar-width: none;
-   -ms-overflow-style: none;
+   .bg-dark-pattern {
+      background-color: #0a0a0a;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+   }
+   
+   .no-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+   }
+   
+   .no-scrollbar::-webkit-scrollbar {
+      display: none;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+   }
 }
