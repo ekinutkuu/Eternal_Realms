@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from "typeorm";
 import { Character } from "./Character";
 import { Location } from "./Location";
+import { Content } from "./Content";
 
 @Entity()
 export class Realm {
@@ -21,4 +22,8 @@ export class Realm {
 
    @OneToMany(() => Location, (location) => location.realm_id)
    locations!: Location[];
+
+   @ManyToMany(() => Content, (content) => content.realm_id)
+   @JoinTable({ name: "realm_contents", joinColumn: { name: "realm_id" }, inverseJoinColumn: { name: "content_id" } })
+   contentTypes!: Content[];
 }

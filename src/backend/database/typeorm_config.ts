@@ -3,6 +3,7 @@ import { PG_CONFIG } from "../pg_config";
 import { Realm } from "./entity/Realm";
 import { Character } from "./entity/Character";
 import { Location } from "./entity/Location";
+import { Content } from "./entity/Content";
 import { User } from "./entity/User";
 
 export const AppDataSource = new DataSource({
@@ -14,7 +15,7 @@ export const AppDataSource = new DataSource({
    port: PG_CONFIG.port,
    synchronize: true,
    logging: false,
-   entities: [Realm, Character, Location, User],
+   entities: [Realm, Character, Location, Content, User],
    migrations: [],
    subscribers: [],
 });
